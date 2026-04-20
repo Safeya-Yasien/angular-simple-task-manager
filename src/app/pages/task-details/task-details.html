@@ -1,1 +1,25 @@
-<p>task-details works!</p>
+<div class="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md border">
+  @if (task) {
+    <h1 class="text-2xl font-bold text-gray-800 mb-4">
+      {{ task.title }}
+    </h1>
+
+    <p class="text-gray-600 mb-4">
+      {{ task.description }}
+    </p>
+
+    <div class="flex items-center justify-between text-sm text-gray-500">
+      <span> Created: {{ task.createdAt.toLocaleDateString() }} </span>
+
+      <span
+        class="px-3 py-1 rounded-full text-white"
+        [class.bg-green-500]="task.isDone"
+        [class.bg-red-500]="!task.isDone"
+      >
+        {{ task.isDone ? 'Done' : 'Pending' }}
+      </span>
+    </div>
+  } @else {
+    <p class="text-red-500">Task not found</p>
+  }
+</div>

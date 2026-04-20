@@ -1,1 +1,31 @@
-<p>home works!</p>
+<div class="p-6 space-y-4 max-w-2xl mx-auto">
+  @for (task of taskService.tasks(); track task.id) {
+    <div
+      class="bg-white rounded-xl shadow-md p-4 border border-gray-200 hover:shadow-lg transition flex flex-col gap-2"
+    >
+      <div class="flex items-center justify-between">
+        <a [routerLink]="['/task', task.id]" class="">
+          <h1 class="text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors">
+            {{ task.title }}
+          </h1>
+        </a>
+
+        <span
+          class="px-2 py-1 rounded-full text-white text-xs"
+          [class.bg-green-500]="task.isDone"
+          [class.bg-red-500]="!task.isDone"
+        >
+          {{ task.isDone ? 'Done' : 'Pending' }}
+        </span>
+      </div>
+
+      <p class="text-gray-600 text-sm">
+        {{ task.description }}
+      </p>
+
+      <span class="text-xs text-gray-500">
+        {{ task.createdAt.toLocaleDateString() }}
+      </span>
+    </div>
+  }
+</div>
