@@ -1,0 +1,24 @@
+<nav
+  class="flex items-center justify-between px-6 py-4 bg-linear-to-r from-gray-900 to-gray-800 text-white shadow-md"
+>
+  <div class="text-2xl font-bold tracking-wide">Task Manager</div>
+
+  <div class="flex items-center space-x-6 text-sm font-medium">
+    <a
+      routerLink="/"
+      routerLinkActive="text-blue-600"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="relative transition duration-300 hover:text-blue-400"
+    >
+      Home
+    </a>
+
+    <a
+      routerLink="/add-task"
+      routerLinkActive="bg-blue-600 text-white"
+      class="px-4 py-2 rounded-lg bg-blue-500 transition duration-300 hover:bg-blue-600 hover:shadow-lg"
+    >
+      Add Task
+    </a>
+  </div>
+</nav>
