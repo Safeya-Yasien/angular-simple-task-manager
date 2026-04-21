@@ -34,14 +34,13 @@
       class="bg-white rounded-xl shadow-md p-4 border border-gray-200 hover:shadow-lg transition flex flex-col gap-2"
     >
       <div class="flex items-center justify-between">
-        <a [routerLink]="['/task', task.id]" class="">
+        <a [routerLink]="['/task', task.id]">
           <h1 class="text-lg font-bold text-gray-800 hover:text-blue-600 transition-colors">
             {{ task.title }}
           </h1>
         </a>
-
         <span
-          class="px-2 py-1 rounded-full text-white text-xs"
+          class="px-2 py-1 rounded-full text-white text-xs font-semibold"
           [class.bg-green-500]="task.completed"
           [class.bg-red-500]="!task.completed"
         >
@@ -49,13 +48,35 @@
         </span>
       </div>
 
-      <p class="text-gray-600 text-sm">
-        {{ task.description }}
-      </p>
+      <p class="text-gray-600 text-sm">{{ task.description }}</p>
 
-      <span class="text-xs text-gray-500">
-        {{ task.createdAt.toLocaleDateString() }}
-      </span>
+      <div class="flex items-center justify-between mt-2 pt-2 border-t border-gray-50">
+        <span class="text-xs text-gray-400">
+          {{ task.createdAt.toLocaleDateString() }}
+        </span>
+
+        <div class="flex gap-2">
+          <button
+            (click)="taskService.completeTask(task.id)"
+            class="text-xs px-3 py-1 rounded-md transition border"
+            [class.bg-green-50]="task.completed"
+            [class.text-green-600]="task.completed"
+            [class.border-green-200]="task.completed"
+            [class.bg-gray-50]="!task.completed"
+            [class.text-gray-600]="!task.completed"
+            [class.hover:bg-green-100]="!task.completed"
+          >
+            Complete
+          </button>
+
+          <button
+            (click)="taskService.deleteTask(task.id)"
+            class="text-xs px-3 py-1 rounded-md bg-red-50 text-red-600 border border-red-100 hover:bg-red-600 hover:text-white transition"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
     </div>
   }
 </div>

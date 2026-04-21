@@ -61,4 +61,19 @@ export class Tasks {
       this.notification.set(null);
     }, 3000);
   }
+
+  deleteTask(id: number) {
+    this.tasksSignal.update((tasks) => tasks.filter((task) => task.id !== id));
+  }
+
+  completeTask(id: number) {
+    this.tasksSignal.update((tasks) =>
+      tasks.map((task) => {
+        if (task.id === id) {
+          return { ...task, completed: !task.completed };
+        }
+        return task;
+      }),
+    );
+  }
 }
