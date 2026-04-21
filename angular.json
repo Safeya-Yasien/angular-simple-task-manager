@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "task-manager": {
+    "angular-simple-task-manager": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -24,9 +24,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "styles": ["src/styles.css"]
           },
           "configurations": {
             "production": {
@@ -56,10 +54,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "task-manager:build:production"
+              "buildTarget": "angular-simple-task-manager:build:production"
             },
             "development": {
-              "buildTarget": "task-manager:build:development"
+              "buildTarget": "angular-simple-task-manager:build:development"
             }
           },
           "defaultConfiguration": "development"
