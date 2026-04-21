@@ -13,10 +13,10 @@
 
       <span
         class="px-3 py-1 rounded-full text-white"
-        [class.bg-green-500]="task.isDone"
-        [class.bg-red-500]="!task.isDone"
+        [class.bg-green-500]="task.completed"
+        [class.bg-red-500]="!task.completed"
       >
-        {{ task.isDone ? 'Done' : 'Pending' }}
+        {{ task.completed ? 'Done' : 'Pending' }}
       </span>
     </div>
   } @else {

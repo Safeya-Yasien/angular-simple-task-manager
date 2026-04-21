@@ -14,7 +14,5 @@ export class TaskDetails {
   taskService = inject(Tasks);
   task = this.taskService.getTaskById(this.taskId);
 
-  ngOnInit() {
-    console.log('this.route', this.task);
-  }
+
 }
