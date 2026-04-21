@@ -35,4 +35,15 @@ export class Tasks {
   getTaskById(id: number) {
     return this.tasks().find((task) => task.id === id);
   }
+
+  addTask(title: string, description: string) {
+    const newTask: ITask = {
+      id: this.tasks().length + 1,
+      title,
+      description,
+      isDone: false,
+      createdAt: new Date(),
+    };
+    this.tasksSignal.update((tasks) => [...tasks, newTask]);
+  }
 }

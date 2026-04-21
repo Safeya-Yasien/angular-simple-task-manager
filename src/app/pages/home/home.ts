@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Tasks } from '../../services/tasks';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
