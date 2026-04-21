@@ -31,6 +31,7 @@ export class Tasks {
   ]);
 
   tasks = this.tasksSignal.asReadonly();
+  notification = signal<string | null>(null);
 
   getTaskById(id: number) {
     return this.tasks().find((task) => task.id === id);
@@ -45,5 +46,11 @@ export class Tasks {
       createdAt: new Date(),
     };
     this.tasksSignal.update((tasks) => [...tasks, newTask]);
+
+    this.notification.set('Task added successfully');
+
+    setTimeout(() => {
+      this.notification.set(null);
+    }, 3000);
   }
 }
