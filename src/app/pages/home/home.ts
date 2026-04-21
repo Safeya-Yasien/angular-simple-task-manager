@@ -10,4 +10,18 @@ import { RouterLink } from '@angular/router';
 })
 export class Home {
   taskService = inject(Tasks);
+
+  activeFilter: 'all' | 'completed' | 'pending' = 'all';
+
+  filterTasks() {
+    switch (this.activeFilter) {
+      case 'completed':
+        return this.taskService.completedTasks();
+      case 'pending':
+        return this.taskService.pendingTasks();
+
+      default:
+        return this.taskService.tasks();
+    }
+  }
 }

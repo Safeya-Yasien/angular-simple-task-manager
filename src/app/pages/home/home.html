@@ -1,5 +1,35 @@
 <div class="p-6 space-y-4 max-w-2xl mx-auto">
-  @for (task of taskService.tasks(); track task.id) {
+  <!-- filter -->
+  <div class="flex items-center justify-center gap-2 bg-gray-100 p-2 rounded-xl w-fit mx-auto">
+    <button
+      (click)="activeFilter = 'all'"
+      [class.bg-blue-600]="activeFilter === 'all'"
+      [class.text-white]="activeFilter === 'all'"
+      class="cursor-pointer px-4 py-1.5 rounded-lg text-sm font-medium transition bg-blue-600 text-white shadow"
+    >
+      All
+    </button>
+
+    <button
+      (click)="activeFilter = 'completed'"
+      [class.bg-blue-600]="activeFilter === 'completed'"
+      [class.text-white]="activeFilter === 'completed'"
+      class="cursor-pointer px-4 py-1.5 rounded-lg text-sm font-medium transition text-gray-600 hover:bg-blue-500 hover:text-white hover:shadow"
+    >
+      Completed
+    </button>
+
+    <button
+      (click)="activeFilter = 'pending'"
+      [class.bg-blue-600]="activeFilter === 'pending'"
+      [class.text-white]="activeFilter === 'pending'"
+      class="cursor-pointer px-4 py-1.5 rounded-lg text-sm font-medium transition text-gray-600 hover:bg-blue-500 hover:text-white hover:shadow"
+    >
+      Pending
+    </button>
+  </div>
+
+  @for (task of filterTasks(); track task.id) {
     <div
       class="bg-white rounded-xl shadow-md p-4 border border-gray-200 hover:shadow-lg transition flex flex-col gap-2"
     >
@@ -12,10 +42,10 @@
 
         <span
           class="px-2 py-1 rounded-full text-white text-xs"
-          [class.bg-green-500]="task.isDone"
-          [class.bg-red-500]="!task.isDone"
+          [class.bg-green-500]="task.completed"
+          [class.bg-red-500]="!task.completed"
         >
-          {{ task.isDone ? 'Done' : 'Pending' }}
+          {{ task.completed ? 'Completed' : 'Pending' }}
         </span>
       </div>
 
